@@ -22,25 +22,27 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events;
+package org.goblom.bpi.bukkit.events.recieve;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
+import java.io.DataInputStream;
+import java.io.IOException;
+import org.goblom.bpi.bukkit.events.BungeeRecieveEvent;
 
 /**
  *
  * @author Goblom
  */
-public abstract class BungeeEvent extends Event {
+public class RecieveGetServerEvent extends BungeeRecieveEvent {
+
+    private final String server;
     
-    private static final HandlerList handlers = new HandlerList();
+    public RecieveGetServerEvent(DataInputStream in) throws IOException {
+        super(in);
         
-    @Override
-    public HandlerList getHandlers() {
-        return handlers;
+        this.server = in.readUTF();
     }
     
-    public static HandlerList getHandlerList() {
-        return handlers;
+    public String getServer() {
+        return server;
     }
 }

@@ -22,14 +22,14 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.controller;
+package org.goblom.bpi.bukkit.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.event.Event;
-import org.goblom.bungee.api.BungeePI;
-import org.goblom.bungee.api.events.BungeeEvent;
+import org.goblom.bpi.bukkit.BungeePI;
+import org.goblom.bpi.bukkit.events.BungeeEvent;
 
 /**
  *

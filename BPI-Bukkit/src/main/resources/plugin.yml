@@ -1,4 +1,4 @@
-main: org.goblom.bungee.api.BungeePI
+main: org.goblom.bpi.bukkit.BungeePI
 name: BungeePI
 version: 1.0
 author: Goblom

@@ -22,37 +22,44 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events.recieve;
+package org.goblom.bpi.bukkit.controller;
 
-import java.io.DataInputStream;
+import org.goblom.bpi.bukkit.util.ChannelHelper;
 import java.io.IOException;
-import org.goblom.bungee.api.events.BungeeRecieveEvent;
+import org.goblom.bpi.bukkit.BungeePI;
 
 /**
  *
  * @author Goblom
  */
-public class RecievePlayerListEvent extends BungeeRecieveEvent {
-
-    private final String server;
-    private final String playerList;
+public class BungeePlayer {
     
-    public RecievePlayerListEvent(DataInputStream in) throws IOException {
-        super(in);
-        
-        this.server = in.readUTF();
-        this.playerList = in.readUTF();
+    private final String bungeePlayer;
+    
+    public BungeePlayer(String bungeePlayer) {
+        this.bungeePlayer = bungeePlayer;
     }
     
-    public String getServer() {
-        return server;
+    public String getPlayerName() {
+        return bungeePlayer;
     }
     
-    public String getPlayers() {
-        return playerList;
+    public void sendMessage(String message) throws IOException {
+        ChannelHelper.sendMessage(getPlayerName(), message);
     }
     
-    public String[] getPlayersAsArray() {
-        return playerList.split(", ");
+    public String getServer() throws IOException {
+        for (BungeeServer bs : BungeePI.getPlugin().getController().getBungeeServers()) {
+            if (bs.getPlayerList().contains(getPlayerName())) return bs.getName(); 
+        }
+        return "No Server";
+    }
+    
+    public void moveToServer(String server) throws IOException {
+        ChannelHelper.connectOther(getPlayerName(), server);
+    }
+    
+    public String getIP() throws IOException {
+        return ChannelHelper.getIP();
     }
 }

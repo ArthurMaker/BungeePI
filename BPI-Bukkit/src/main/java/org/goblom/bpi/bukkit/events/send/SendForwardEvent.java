@@ -22,30 +22,53 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events.send;
+package org.goblom.bpi.bukkit.events.send;
 
-import org.bukkit.entity.Player;
-import org.goblom.bungee.api.events.BungeeSendEvent;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import org.goblom.bpi.bukkit.events.BungeeSendEvent;
+import org.goblom.bpi.bukkit.util.ForwardMessage;
 
 /**
  *
  * @author Goblom
  */
-public class SendMessageEvent extends BungeeSendEvent {
+public class SendForwardEvent extends BungeeSendEvent {
     
-    private final String playerName;
-    private final String message;
+    private final String server, channel;
     
-    public SendMessageEvent(String player, String message) {
-        this.playerName = player;
+    private final ByteArrayOutputStream mainBytes;
+    private final DataOutputStream mainOut;
+    private final ForwardMessage message;
+    
+    public SendForwardEvent(ByteArrayOutputStream mainBytes, DataOutputStream mainOut, ForwardMessage message) {
+        this.server = message.getServer();
+        this.channel = message.getChannel();
+        
+        this.mainBytes = mainBytes;
+        this.mainOut = mainOut;
+        
         this.message = message;
+        
     }
     
-    public String getPlayerName() {
-        return playerName;
+    public String getServer() {
+        return server;
     }
     
-    public String getMessage() {
+    public String getChannel() {
+        return channel;
+    }
+    
+    public ByteArrayOutputStream getMainByteStream() {
+        return mainBytes;
+    }
+    
+    public DataOutputStream getMainDataStream() {
+        return mainOut;
+    }
+    
+    public ForwardMessage getSentMessage() {
         return message;
     }
 }

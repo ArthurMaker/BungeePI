@@ -22,12 +22,37 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events;
+package org.goblom.bpi.bukkit.events.recieve;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+import org.goblom.bpi.bukkit.events.BungeeRecieveEvent;
 
 /**
  *
  * @author Goblom
  */
-public abstract class BungeeSendEvent extends BungeeEvent {
+public class RecieveIPEvent extends BungeeRecieveEvent {
 
+    private final String ipAddress;
+    private final int port;
+    
+    public RecieveIPEvent(DataInputStream in) throws IOException {
+        super(in);
+        
+        this.ipAddress = in.readUTF();
+        this.port = in.readInt();
+    }
+    
+    public String getIP() {
+        return ipAddress;
+    }
+    
+    public int getPort() {
+        return port;
+    }
+    
+    public String getAddress() {
+        return ipAddress + ":" + port;
+    }    
 }

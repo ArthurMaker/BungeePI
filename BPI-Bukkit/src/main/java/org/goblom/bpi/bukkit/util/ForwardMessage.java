@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.util;
+package org.goblom.bpi.bukkit.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

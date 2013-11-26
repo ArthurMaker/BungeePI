@@ -22,26 +22,45 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.util;
+package org.goblom.bpi.bukkit;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListenerRegistration;
+import org.goblom.bpi.bukkit.controller.Controller;
+import org.goblom.bpi.bukkit.listener.BungeeChannelListener;
 
 /**
  *
  * @author Goblom
  */
-public enum BungeeChannels {
-    CONNECT("Connect"),
-    CONNECT_OTHER("ConnectOther"),
-    IP("IP"),
-    PLAYER_COUNT("PlayerCount"),
-    PLAYER_LIST("PlayerList"),
-    GET_SERVERS("GetServers"),
-    GET_SERVER("GetServer"),
-    MESSAGE("Message"),
-    FORWARD("Forward");
-//    CUSTOM; //Lets support this later.
+public class BungeePI extends JavaPlugin {
     
-    private final String channel;
-//    private BungeeChannels() { this(null); } //lets support this later.
-    private BungeeChannels(String channel) { this.channel = channel; }
-    public String getChannel() { return channel; }
+    private static BungeePI plugin;
+    
+    private Controller bungeeController;
+    
+    private PluginMessageListenerRegistration pmlr;
+    
+    public void onEnable() {
+        plugin = this;
+        
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        pmlr = getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeChannelListener());
+        
+        bungeeController = new Controller();
+    }
+    
+    public static BungeePI getPlugin() {
+        return plugin;
+    }
+    
+    public Controller getController() {
+        return bungeeController;
+    }
+    
+    public Player getFirstPlayer() {
+        return Bukkit.getOnlinePlayers()[0];
+    }
 }

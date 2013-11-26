@@ -22,18 +22,30 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events.recieve;
+package org.goblom.bpi.bukkit.events.send;
 
-import java.io.DataInputStream;
-import org.goblom.bungee.api.events.BungeeRecieveEvent;
+import org.bukkit.entity.Player;
+import org.goblom.bpi.bukkit.events.BungeeSendEvent;
 
 /**
  *
  * @author Goblom
  */
-public class RecieveOtherEvent extends BungeeRecieveEvent {
-
-    public RecieveOtherEvent(DataInputStream in) {
-        super(in);
+public class SendConnectEvent extends BungeeSendEvent {
+    
+    private final String playerName;
+    private final String server;
+    
+    public SendConnectEvent(Player player, String server) {
+        this.playerName = player.getName();
+        this.server = server;
+    }
+    
+    public String getServer() {
+        return server;
+    }
+    
+    public String getPlayerName() {
+        return playerName;
     }
 }

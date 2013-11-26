@@ -22,45 +22,12 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events.recieve;
-
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import org.goblom.bungee.api.events.BungeeRecieveEvent;
+package org.goblom.bpi.bukkit.events;
 
 /**
  *
  * @author Goblom
  */
-public class RecieveForwardEvent extends BungeeRecieveEvent {
-    
-    private final String subChannel;
-    private final int messageLength;
-    private final byte[] messageRecieved;
-    
-    public RecieveForwardEvent(DataInputStream in) throws IOException {
-        super(in);
-        this.subChannel = in.readUTF();
-        this.messageLength = in.readShort();
-        this.messageRecieved = new byte[messageLength];
-        
-        in.readFully(messageRecieved);
-    }
-    
-    public String getChannel() {
-        return subChannel;
-    }
-    
-    public int getMessageLength() {
-        return messageLength;
-    }
-    
-    public byte[] getMessageRecieved() {
-        return messageRecieved;
-    }
-    
-    public DataInputStream getDataAsWritten() {
-        return new DataInputStream(new ByteArrayInputStream(messageRecieved));
-    }
+public abstract class BungeeSendEvent extends BungeeEvent {
+
 }

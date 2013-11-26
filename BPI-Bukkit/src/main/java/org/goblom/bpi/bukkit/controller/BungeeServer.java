@@ -22,14 +22,14 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.controller;
+package org.goblom.bpi.bukkit.controller;
 
-import org.goblom.bungee.api.util.ChannelHelper;
+import org.goblom.bpi.bukkit.util.ChannelHelper;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import org.bukkit.entity.Player;
-import org.goblom.bungee.api.util.ForwardMessage;
+import org.goblom.bpi.bukkit.util.ForwardMessage;
 
 /**
  *

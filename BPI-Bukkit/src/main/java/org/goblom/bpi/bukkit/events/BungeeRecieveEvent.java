@@ -22,34 +22,23 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events.recieve;
+package org.goblom.bpi.bukkit.events;
 
 import java.io.DataInputStream;
-import java.io.IOException;
-import org.goblom.bungee.api.events.BungeeRecieveEvent;
 
 /**
  *
  * @author Goblom
  */
-public class RecievePlayerCountEvent extends BungeeRecieveEvent {
-
-    private final String server;
-    private final int playerCount;
+public abstract class BungeeRecieveEvent extends BungeeEvent {
     
-    public RecievePlayerCountEvent(DataInputStream in) throws IOException {
-        super(in);
-        
-        this.server = in.readUTF();
-        this.playerCount = in.readInt();
+    private final DataInputStream in;
+    
+    public BungeeRecieveEvent(DataInputStream in) {
+        this.in = in;
     }
     
-    public String getServer() {
-        return server;
-    }
-    
-    public int getPlayerCount() {
-        return playerCount;
-    }
-
+    public DataInputStream getInputStream() {
+        return in;
+    }    
 }

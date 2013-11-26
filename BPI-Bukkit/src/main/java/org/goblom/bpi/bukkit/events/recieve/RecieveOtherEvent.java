@@ -22,45 +22,18 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api;
+package org.goblom.bpi.bukkit.events.recieve;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.messaging.PluginMessageListenerRegistration;
-import org.goblom.bungee.api.controller.Controller;
-import org.goblom.bungee.api.listener.BungeeChannelListener;
+import java.io.DataInputStream;
+import org.goblom.bpi.bukkit.events.BungeeRecieveEvent;
 
 /**
  *
  * @author Goblom
  */
-public class BungeePI extends JavaPlugin {
-    
-    private static BungeePI plugin;
-    
-    private Controller bungeeController;
-    
-    private PluginMessageListenerRegistration pmlr;
-    
-    public void onEnable() {
-        plugin = this;
-        
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        pmlr = getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeChannelListener());
-        
-        bungeeController = new Controller();
-    }
-    
-    public static BungeePI getPlugin() {
-        return plugin;
-    }
-    
-    public Controller getController() {
-        return bungeeController;
-    }
-    
-    public Player getFirstPlayer() {
-        return Bukkit.getOnlinePlayers()[0];
+public class RecieveOtherEvent extends BungeeRecieveEvent {
+
+    public RecieveOtherEvent(DataInputStream in) {
+        super(in);
     }
 }

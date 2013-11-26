@@ -22,18 +22,18 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.util;
+package org.goblom.bpi.bukkit.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import org.bukkit.entity.Player;
-import org.goblom.bungee.api.BungeePI;
-import org.goblom.bungee.api.events.send.SendConnectEvent;
-import org.goblom.bungee.api.events.send.SendConnectOtherEvent;
-import org.goblom.bungee.api.events.send.SendForwardEvent;
-import org.goblom.bungee.api.events.send.SendMessageEvent;
-import org.goblom.bungee.api.util.BungeeChannels;
+import org.goblom.bpi.bukkit.BungeePI;
+import org.goblom.bpi.bukkit.events.send.SendConnectEvent;
+import org.goblom.bpi.bukkit.events.send.SendConnectOtherEvent;
+import org.goblom.bpi.bukkit.events.send.SendForwardEvent;
+import org.goblom.bpi.bukkit.events.send.SendMessageEvent;
+import org.goblom.bpi.bukkit.util.BungeeChannels;
 
 /**
  *

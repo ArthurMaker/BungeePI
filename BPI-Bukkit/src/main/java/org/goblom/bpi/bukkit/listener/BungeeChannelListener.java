@@ -22,22 +22,22 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.listener;
+package org.goblom.bpi.bukkit.listener;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.goblom.bungee.api.BungeePI;
-import org.goblom.bungee.api.util.ChannelHelper;
-import org.goblom.bungee.api.events.recieve.RecieveForwardEvent;
-import org.goblom.bungee.api.events.recieve.RecieveGetServerEvent;
-import org.goblom.bungee.api.events.recieve.RecieveGetServersEvent;
-import org.goblom.bungee.api.events.recieve.RecieveIPEvent;
-import org.goblom.bungee.api.events.recieve.RecieveOtherEvent;
-import org.goblom.bungee.api.events.recieve.RecievePlayerCountEvent;
-import org.goblom.bungee.api.events.recieve.RecievePlayerListEvent;
+import org.goblom.bpi.bukkit.BungeePI;
+import org.goblom.bpi.bukkit.util.ChannelHelper;
+import org.goblom.bpi.bukkit.events.recieve.RecieveForwardEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveGetServerEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveGetServersEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveIPEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveOtherEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecievePlayerCountEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecievePlayerListEvent;
 
 /**
  *

@@ -22,44 +22,30 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.controller;
+package org.goblom.bpi.bukkit.events.send;
 
-import org.goblom.bungee.api.util.ChannelHelper;
-import java.io.IOException;
-import org.goblom.bungee.api.BungeePI;
+import org.bukkit.entity.Player;
+import org.goblom.bpi.bukkit.events.BungeeSendEvent;
 
 /**
  *
  * @author Goblom
  */
-public class BungeePlayer {
+public class SendMessageEvent extends BungeeSendEvent {
     
-    private final String bungeePlayer;
+    private final String playerName;
+    private final String message;
     
-    public BungeePlayer(String bungeePlayer) {
-        this.bungeePlayer = bungeePlayer;
+    public SendMessageEvent(String player, String message) {
+        this.playerName = player;
+        this.message = message;
     }
     
     public String getPlayerName() {
-        return bungeePlayer;
+        return playerName;
     }
     
-    public void sendMessage(String message) throws IOException {
-        ChannelHelper.sendMessage(getPlayerName(), message);
-    }
-    
-    public String getServer() throws IOException {
-        for (BungeeServer bs : BungeePI.getPlugin().getController().getBungeeServers()) {
-            if (bs.getPlayerList().contains(getPlayerName())) return bs.getName(); 
-        }
-        return "No Server";
-    }
-    
-    public void moveToServer(String server) throws IOException {
-        ChannelHelper.connectOther(getPlayerName(), server);
-    }
-    
-    public String getIP() throws IOException {
-        return ChannelHelper.getIP();
+    public String getMessage() {
+        return message;
     }
 }

@@ -22,53 +22,25 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bungee.api.events.send;
+package org.goblom.bpi.bukkit.events;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import org.goblom.bungee.api.events.BungeeSendEvent;
-import org.goblom.bungee.api.util.ForwardMessage;
+import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
 
 /**
  *
  * @author Goblom
  */
-public class SendForwardEvent extends BungeeSendEvent {
+public abstract class BungeeEvent extends Event {
     
-    private final String server, channel;
-    
-    private final ByteArrayOutputStream mainBytes;
-    private final DataOutputStream mainOut;
-    private final ForwardMessage message;
-    
-    public SendForwardEvent(ByteArrayOutputStream mainBytes, DataOutputStream mainOut, ForwardMessage message) {
-        this.server = message.getServer();
-        this.channel = message.getChannel();
+    private static final HandlerList handlers = new HandlerList();
         
-        this.mainBytes = mainBytes;
-        this.mainOut = mainOut;
-        
-        this.message = message;
-        
+    @Override
+    public HandlerList getHandlers() {
+        return handlers;
     }
     
-    public String getServer() {
-        return server;
-    }
-    
-    public String getChannel() {
-        return channel;
-    }
-    
-    public ByteArrayOutputStream getMainByteStream() {
-        return mainBytes;
-    }
-    
-    public DataOutputStream getMainDataStream() {
-        return mainOut;
-    }
-    
-    public ForwardMessage getSentMessage() {
-        return message;
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 }
