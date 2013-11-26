@@ -27,6 +27,7 @@ package org.goblom.bungee.api.events.send;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import org.goblom.bungee.api.events.BungeeSendEvent;
+import org.goblom.bungee.api.util.ForwardMessage;
 
 /**
  *
@@ -35,18 +36,20 @@ import org.goblom.bungee.api.events.BungeeSendEvent;
 public class SendForwardEvent extends BungeeSendEvent {
     
     private final String server, channel;
-    private final ByteArrayOutputStream mainBytes, msgBytes;
-    private final DataOutputStream mainOut, msgOut;
     
-    public SendForwardEvent(String server, String channel, ByteArrayOutputStream mainBytes, ByteArrayOutputStream msgBytes, DataOutputStream mainOut, DataOutputStream msgOut) {
-        this.server = server;
-        this.channel = channel;
+    private final ByteArrayOutputStream mainBytes;
+    private final DataOutputStream mainOut;
+    private final ForwardMessage message;
+    
+    public SendForwardEvent(ByteArrayOutputStream mainBytes, DataOutputStream mainOut, ForwardMessage message) {
+        this.server = message.getServer();
+        this.channel = message.getChannel();
         
         this.mainBytes = mainBytes;
         this.mainOut = mainOut;
         
-        this.msgBytes = msgBytes;
-        this.msgOut = msgOut;
+        this.message = message;
+        
     }
     
     public String getServer() {
@@ -61,15 +64,11 @@ public class SendForwardEvent extends BungeeSendEvent {
         return mainBytes;
     }
     
-    public ByteArrayOutputStream getSentBytesStream() {
-        return msgBytes;
-    }
-    
     public DataOutputStream getMainDataStream() {
         return mainOut;
     }
     
-    public DataOutputStream getSentDataStream() {
-        return msgOut;
+    public ForwardMessage getSentMessage() {
+        return message;
     }
 }

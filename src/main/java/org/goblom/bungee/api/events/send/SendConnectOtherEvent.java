@@ -34,12 +34,11 @@ import org.goblom.bungee.api.events.BungeeSendEvent;
 public class SendConnectOtherEvent extends BungeeSendEvent {
     
     private final String playerName;
-    private final String toServer, fromServer;
+    private final String toServer;
     
-    public SendConnectOtherEvent(Player player, String toServer/*, String fromServer*/) {
-        this.playerName = player.getName();
+    public SendConnectOtherEvent(String player, String toServer) {
+        this.playerName = player;
         this.toServer = toServer;
-        this.fromServer = ""; //fromServer;
     }
     
     public String getPlayerName() {
@@ -48,9 +47,5 @@ public class SendConnectOtherEvent extends BungeeSendEvent {
     
     public String sentTo() {
         return toServer;
-    }
-    
-    public String sentFrom() {
-        return fromServer;
     }
 }

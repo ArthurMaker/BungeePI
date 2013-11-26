@@ -29,6 +29,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import org.bukkit.entity.Player;
 import org.goblom.bungee.api.BungeeAPI;
+import org.goblom.bungee.api.events.send.SendConnectEvent;
+import org.goblom.bungee.api.events.send.SendConnectOtherEvent;
+import org.goblom.bungee.api.events.send.SendForwardEvent;
+import org.goblom.bungee.api.events.send.SendMessageEvent;
 import org.goblom.bungee.api.util.BungeeChannels;
 
 /**
@@ -68,6 +72,7 @@ public class ChannelHelper {
         out.writeUTF(server);
 
         BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeeAPI.getPlugin().getController().callEvent(new SendConnectEvent(player, server));
     }
     
     public static void connectOther(String player, String server) throws IOException {
@@ -81,6 +86,7 @@ public class ChannelHelper {
         out.writeUTF(server);
         
         BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeeAPI.getPlugin().getController().callEvent(new SendConnectOtherEvent(player, server));
     }
     
     public static String getIP() throws IOException {
@@ -105,6 +111,7 @@ public class ChannelHelper {
         out.writeUTF(message);
         
         BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeeAPI.getPlugin().getController().callEvent(new SendMessageEvent(player, message));
     }
     
     public static int getPlayerCount(String server) throws IOException {
@@ -162,5 +169,6 @@ public class ChannelHelper {
         out.write(message.getBytesToForward().toByteArray());
         
         BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeeAPI.getPlugin().getController().callEvent(new SendForwardEvent(byteArray, out, message));
     }
 }

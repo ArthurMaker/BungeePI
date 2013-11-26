@@ -36,8 +36,8 @@ public class SendMessageEvent extends BungeeSendEvent {
     private final String playerName;
     private final String message;
     
-    public SendMessageEvent(Player player, String message) {
-        this.playerName = player.getName();
+    public SendMessageEvent(String player, String message) {
+        this.playerName = player;
         this.message = message;
     }
     
