@@ -1,4 +1,4 @@
-BungeeAPI
+BungeePI -- Bukkit
 =========
 
 Provide a sime wrapper & api for any server withing to use BungeeCord. This in no way interacts with player data inside a Server. It only recieves and sends data to and fro.
@@ -30,3 +30,4 @@ Send Channel Events
 **SendForwardEvent** -- Called when you send the "Forward" channel
 
 **SendMessageEvent** -- Called when you send the "Message" channel
+
