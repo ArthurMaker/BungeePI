@@ -7,26 +7,26 @@ Contains custom events, player handler, server handlers.
 
 Recieve Channel Events
 ==========
-RecieveForwardEvent -- Called when the "Forward" channel is used
+**RecieveForwardEvent** -- Called when the "Forward" channel is used
 
-RecieveGetServerEvent -- Called when the "GetServer" channel is used
+**RecieveGetServerEvent** -- Called when the "GetServer" channel is used
 
-RecieveGetServersEvent -- Called when the "GetServers" channel is used
+**RecieveGetServersEvent** -- Called when the "GetServers" channel is used
 
-RecieveIPEvent -- Called when the "IP" channel is used
+**RecieveIPEvent** -- Called when the "IP" channel is used
 
-RecieveOtherEvent -- Called when a channel that is not a BungeeCord channel is used
+**RecieveOtherEvent** -- Called when a channel that is not a BungeeCord channel is used
 
-RecievePlayerCountEvent -- Called when the "PlayerCount" channel is used
+**RecievePlayerCountEvent** -- Called when the "PlayerCount" channel is used
 
-RecievePlayerListEvent -- Called when the "PlayerList" channel is used
+**RecievePlayerListEvent** -- Called when the "PlayerList" channel is used
 
 Send Channel Events
 ==========
-SendConnectEvent -- Called when you send the "Connect" channel
+**SendConnectEvent** -- Called when you send the "Connect" channel
 
-SendConnectOtherEvent -- Called when you send the "ConnectOther" channel
+**SendConnectOtherEvent** -- Called when you send the "ConnectOther" channel
 
-SendForwardEvent -- Called when you send the "Forward" channel
+**SendForwardEvent** -- Called when you send the "Forward" channel
 
-SendMessageEvent -- Called when you send the "Message" channel
+**SendMessageEvent** -- Called when you send the "Message" channel
