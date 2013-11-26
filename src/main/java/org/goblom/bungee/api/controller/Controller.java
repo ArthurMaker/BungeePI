@@ -28,7 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.event.Event;
-import org.goblom.bungee.api.BungeeAPI;
+import org.goblom.bungee.api.BungeePI;
 import org.goblom.bungee.api.events.BungeeEvent;
 
 /**
@@ -52,14 +52,14 @@ public class Controller {
         if (!server.toLowerCase().equals("all")) {
             if (!bungeeServers.contains(server)) {
                 bungeeServers.add(new BungeeServer(server));
-            } else BungeeAPI.getPlugin().getLogger().info("A Bungee Server with that name has already been registered.");
-        } else BungeeAPI.getPlugin().getLogger().warning("A plugin has just attempted to register a server with the name '" + server + "'. That name is not allowed because it is a major factor with some Bungee Channels");
+            } else BungeePI.getPlugin().getLogger().info("A Bungee Server with that name has already been registered.");
+        } else BungeePI.getPlugin().getLogger().warning("A plugin has just attempted to register a server with the name '" + server + "'. That name is not allowed because it is a major factor with some Bungee Channels");
     }
     
     public void addBungeePlayer(String playerName) {
         if (!bungeePlayers.contains(playerName)) {
             bungeePlayers.add(new BungeePlayer(playerName));
-        } else BungeeAPI.getPlugin().getLogger().info("A Bungee Player with that name has already been registered.");
+        } else BungeePI.getPlugin().getLogger().info("A Bungee Player with that name has already been registered.");
     }
     
     public BungeeServer getBungeeServer(String server) {
@@ -89,10 +89,10 @@ public class Controller {
     }
     
     public void callEvent(BungeeEvent event) {
-        BungeeAPI.getPlugin().getServer().getPluginManager().callEvent(event);
+        BungeePI.getPlugin().getServer().getPluginManager().callEvent(event);
     }
     
     public void sendPluginMessage(ByteArrayOutputStream message) {
-        BungeeAPI.getPlugin().getFirstPlayer().sendPluginMessage(BungeeAPI.getPlugin(), "BungeeCord", message.toByteArray());
+        BungeePI.getPlugin().getFirstPlayer().sendPluginMessage(BungeePI.getPlugin(), "BungeeCord", message.toByteArray());
     }
 }

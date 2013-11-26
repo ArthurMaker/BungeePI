@@ -26,7 +26,7 @@ package org.goblom.bungee.api.controller;
 
 import org.goblom.bungee.api.util.ChannelHelper;
 import java.io.IOException;
-import org.goblom.bungee.api.BungeeAPI;
+import org.goblom.bungee.api.BungeePI;
 
 /**
  *
@@ -49,7 +49,7 @@ public class BungeePlayer {
     }
     
     public String getServer() throws IOException {
-        for (BungeeServer bs : BungeeAPI.getPlugin().getController().getBungeeServers()) {
+        for (BungeeServer bs : BungeePI.getPlugin().getController().getBungeeServers()) {
             if (bs.getPlayerList().contains(getPlayerName())) return bs.getName(); 
         }
         return "No Server";

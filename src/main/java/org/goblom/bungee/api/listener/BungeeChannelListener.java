@@ -29,7 +29,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.goblom.bungee.api.BungeeAPI;
+import org.goblom.bungee.api.BungeePI;
 import org.goblom.bungee.api.util.ChannelHelper;
 import org.goblom.bungee.api.events.recieve.RecieveForwardEvent;
 import org.goblom.bungee.api.events.recieve.RecieveGetServerEvent;
@@ -55,42 +55,42 @@ public class BungeeChannelListener implements PluginMessageListener {
             switch (subChannel) {
                 case "IP":
                     RecieveIPEvent bri = new RecieveIPEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(bri);
+                    BungeePI.getPlugin().getController().callEvent(bri);
                     ChannelHelper.setPlayerAddress(in.readUTF(), in.readInt()); // Lets set the IP as soon as its recieved
                     break;
                 case "PlayerCount":
                     RecievePlayerCountEvent brpc = new RecievePlayerCountEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(brpc);
+                    BungeePI.getPlugin().getController().callEvent(brpc);
                     ChannelHelper.setServerPlayerCount(in.readUTF(), in.readInt()); // Lets set the player count as soon as its recieved
                     break;
                 case "PlayerList":
                     RecievePlayerListEvent brpl = new RecievePlayerListEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(brpl);
+                    BungeePI.getPlugin().getController().callEvent(brpl);
                     ChannelHelper.setServerPlayerList(in.readUTF()); // Lets set the player list as soon as it is recieved
                     break;
                 case "GetServers":
                     RecieveGetServersEvent brgss = new RecieveGetServersEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(brgss);
+                    BungeePI.getPlugin().getController().callEvent(brgss);
                     break;
                 case "GetServer":
                     RecieveGetServerEvent brgs = new RecieveGetServerEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(brgs);
+                    BungeePI.getPlugin().getController().callEvent(brgs);
                     ChannelHelper.setServerName(in.readUTF()); // Lets set the server name as soon as its recieved
                     break;
                 case "Forward":
                     RecieveForwardEvent brf = new RecieveForwardEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(brf);
+                    BungeePI.getPlugin().getController().callEvent(brf);
                     break;
                 case "Connect": break; // No Response
                 case "ConnectOther": break; // No Response
                 case "Message": break; // No Response
                 default:
                     RecieveOtherEvent bro = new RecieveOtherEvent(in);
-                    BungeeAPI.getPlugin().getController().callEvent(bro);
+                    BungeePI.getPlugin().getController().callEvent(bro);
                     break;
             }
         } catch (IOException ex) {
-            BungeeAPI.getPlugin().getLogger().warning("Unable to read incoming Bungee Plugin Message.");
+            BungeePI.getPlugin().getLogger().warning("Unable to read incoming Bungee Plugin Message.");
         }
     }
 }

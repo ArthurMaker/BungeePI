@@ -35,9 +35,9 @@ import org.goblom.bungee.api.listener.BungeeChannelListener;
  *
  * @author Goblom
  */
-public class BungeeAPI extends JavaPlugin {
+public class BungeePI extends JavaPlugin {
     
-    private static BungeeAPI plugin;
+    private static BungeePI plugin;
     
     private Controller bungeeController;
     
@@ -52,7 +52,7 @@ public class BungeeAPI extends JavaPlugin {
         bungeeController = new Controller();
     }
     
-    public static BungeeAPI getPlugin() {
+    public static BungeePI getPlugin() {
         return plugin;
     }
     

@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.goblom</groupId>
-    <artifactId>BungeeAPI</artifactId>
-    <version>1</version>
+    <artifactId>BPI</artifactId>
+    <version>0.1</version>
     <packaging>jar</packaging>
 
-    <name>BungeeAPI</name>
+    <name>BAPI</name>
     <url>http://maven.apache.org</url>
     <build>
         <plugins>

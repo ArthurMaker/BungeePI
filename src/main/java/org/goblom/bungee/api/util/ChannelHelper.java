@@ -28,7 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import org.bukkit.entity.Player;
-import org.goblom.bungee.api.BungeeAPI;
+import org.goblom.bungee.api.BungeePI;
 import org.goblom.bungee.api.events.send.SendConnectEvent;
 import org.goblom.bungee.api.events.send.SendConnectOtherEvent;
 import org.goblom.bungee.api.events.send.SendForwardEvent;
@@ -71,8 +71,8 @@ public class ChannelHelper {
         out.writeUTF(BungeeChannels.CONNECT.getChannel());
         out.writeUTF(server);
 
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
-        BungeeAPI.getPlugin().getController().callEvent(new SendConnectEvent(player, server));
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().callEvent(new SendConnectEvent(player, server));
     }
     
     public static void connectOther(String player, String server) throws IOException {
@@ -85,8 +85,8 @@ public class ChannelHelper {
         out.writeUTF(player);
         out.writeUTF(server);
         
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
-        BungeeAPI.getPlugin().getController().callEvent(new SendConnectOtherEvent(player, server));
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().callEvent(new SendConnectOtherEvent(player, server));
     }
     
     public static String getIP() throws IOException {
@@ -94,7 +94,7 @@ public class ChannelHelper {
         DataOutputStream out = new DataOutputStream(byteArray);
         
         out.writeUTF(BungeeChannels.IP.getChannel());
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
         
         return playerAddress + ":" + playerPort;
     }
@@ -110,8 +110,8 @@ public class ChannelHelper {
         out.writeUTF(player);
         out.writeUTF(message);
         
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
-        BungeeAPI.getPlugin().getController().callEvent(new SendMessageEvent(player, message));
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().callEvent(new SendMessageEvent(player, message));
     }
     
     public static int getPlayerCount(String server) throws IOException {
@@ -123,7 +123,7 @@ public class ChannelHelper {
         out.writeUTF(BungeeChannels.PLAYER_COUNT.getChannel());
         out.writeUTF(server);
         
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
         
         return serverPlayerCount;
     }
@@ -137,7 +137,7 @@ public class ChannelHelper {
         out.writeUTF(BungeeChannels.PLAYER_LIST.getChannel());
         out.writeUTF(server);
         
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
         
         return serverPlayerList;
     }
@@ -150,7 +150,7 @@ public class ChannelHelper {
         
         out.writeUTF(BungeeChannels.GET_SERVER.getChannel());
         
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
         
         return bungeeServer;
     }
@@ -168,7 +168,7 @@ public class ChannelHelper {
         out.writeShort(message.getBytesToForward().toByteArray().length);
         out.write(message.getBytesToForward().toByteArray());
         
-        BungeeAPI.getPlugin().getController().sendPluginMessage(byteArray);
-        BungeeAPI.getPlugin().getController().callEvent(new SendForwardEvent(byteArray, out, message));
+        BungeePI.getPlugin().getController().sendPluginMessage(byteArray);
+        BungeePI.getPlugin().getController().callEvent(new SendForwardEvent(byteArray, out, message));
     }
 }
