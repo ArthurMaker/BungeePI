@@ -7,7 +7,7 @@
     <version>0.1</version>
     <packaging>jar</packaging>
 
-    <name>BAPI</name>
+    <name>BPI-Bukkit</name>
     <url>http://maven.apache.org</url>
     <build>
         <plugins>
