@@ -37,7 +37,8 @@ public enum BungeeChannels {
     GET_SERVERS("GetServers"),
     GET_SERVER("GetServer"),
     MESSAGE("Message"),
-    FORWARD("Forward");
+    FORWARD("Forward"),
+    BUNGEEPI("BungeePI"); // Future Stuff
 //    CUSTOM; //Lets support this later.
     
     private final String channel;

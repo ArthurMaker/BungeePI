@@ -81,6 +81,7 @@ public class BungeeChannelListener implements PluginMessageListener {
                     RecieveForwardEvent brf = new RecieveForwardEvent(in);
                     BungeePI.getPlugin().getController().callEvent(brf);
                     break;
+                case "BungeePI": break; // Lets not support this yet
                 case "Connect": break; // No Response
                 case "ConnectOther": break; // No Response
                 case "Message": break; // No Response

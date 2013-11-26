@@ -25,6 +25,7 @@
 package org.goblom.bpi.bungeecord;
 
 import net.md_5.bungee.api.plugin.Plugin;
+import org.goblom.bpi.bungeecord.listener.MessageEvent;
 
 /**
  *
@@ -36,6 +37,9 @@ public class BungeePI extends Plugin {
     
     public void onEnable() {
         plugin = this;
+        
+        getProxy().getPluginManager().registerListener(this, new MessageEvent());
+        getProxy().registerChannel("BungeePI"); //Future stuff
     }
     
     public static BungeePI getPlugin() {

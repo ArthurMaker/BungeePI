@@ -25,6 +25,7 @@
 package org.goblom.bpi.bungeecord.listener;
 
 import net.md_5.bungee.api.event.PluginMessageEvent;
+import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 import org.goblom.bpi.bungeecord.BungeePI;
 
@@ -32,7 +33,7 @@ import org.goblom.bpi.bungeecord.BungeePI;
  *
  * @author Goblom
  */
-public class MessageEvent {
+public class MessageEvent implements Listener {
     
     @EventHandler
     public void onPluginMessage(PluginMessageEvent event) {
