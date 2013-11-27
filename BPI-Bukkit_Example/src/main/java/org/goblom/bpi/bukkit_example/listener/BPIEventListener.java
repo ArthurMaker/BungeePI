@@ -22,29 +22,14 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bpi.bukkit_example;
+package org.goblom.bpi.bukkit_example.listener;
 
-import org.bukkit.plugin.java.JavaPlugin;
-import org.goblom.bpi.bukkit_example.listener.BPIEventListener;
-import org.goblom.bpi.bukkit_example.listener.BukkitEventListener;
+import org.bukkit.event.Listener;
 
 /**
  *
  * @author Goblom
  */
-public class BPIExample extends JavaPlugin {
+public class BPIEventListener implements Listener {
     
-    private static BPIExample plugin;
-    
-    public void onEnable() {
-        plugin = this;
-        
-        new BPICommand("bpi");
-        getServer().getPluginManager().registerEvents(new BukkitEventListener(), this);
-        getServer().getPluginManager().registerEvents(new BPIEventListener(), this);
-    }
-    
-    public static BPIExample getPlugin() {
-        return plugin;
-    }
 }
