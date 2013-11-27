@@ -44,6 +44,9 @@ public class BPICommand extends AbstractCommand {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length >= 1) {
             switch (args[0].toLowerCase()) {
+                case "addserver": 
+                    CommandController.addServer(sender, cmd, label, args);
+                    break;
                 case "getserver": 
                     CommandController.getServer(sender, cmd, label, args);
                     break;

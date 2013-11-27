@@ -33,6 +33,10 @@ import org.bukkit.command.CommandSender;
  */
 public class CommandController {
     
+    public static void addServer(CommandSender sender, Command command, String label, String[] args){
+        
+    }
+    
     public static void getServer(CommandSender sender, Command command, String label, String[] args){
         
     }
