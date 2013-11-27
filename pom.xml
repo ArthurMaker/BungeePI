@@ -9,5 +9,6 @@
   <modules>
     <module>BPI-BungeeCord</module>
     <module>BPI-Bukkit</module>
+    <module>BPI-Bukkit_Example</module>
   </modules>
 </project>
