@@ -39,5 +39,6 @@ public class MessageEvent implements Listener {
     public void onPluginMessage(PluginMessageEvent event) {
         BungeePI.getPlugin().getLogger().info("Tag: " + event.getTag());
         BungeePI.getPlugin().getLogger().info("Data: " + event.getData());
+        BungeePI.getPlugin().parseBPIData(event.getData());
     }
 }

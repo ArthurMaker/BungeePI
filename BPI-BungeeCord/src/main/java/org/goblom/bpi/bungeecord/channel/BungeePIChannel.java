@@ -22,32 +22,35 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.bpi.bungeecord;
+package org.goblom.bpi.bungeecord.channel;
 
-import net.md_5.bungee.api.plugin.Plugin;
-import org.goblom.bpi.bungeecord.channel.BungeePIChannel;
-import org.goblom.bpi.bungeecord.listener.MessageEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Goblom
  */
-public class BungeePI extends Plugin {
+public class BungeePIChannel {
+
+    private final byte[] data;
+    private final List<Byte> bytes = new ArrayList<Byte>();
     
-    private static BungeePI plugin;
-    
-    public void onEnable() {
-        plugin = this;
+    public BungeePIChannel(byte[] data) {
+        this.data = data;
         
-        getProxy().getPluginManager().registerListener(this, new MessageEvent());
-        getProxy().registerChannel("BungeePI"); //Future stuff
+        for (byte b : data) bytes.add(b);
     }
     
-    public static BungeePI getPlugin() {
-        return plugin;
+    public byte[] getData() {
+        return data;
     }
     
-    public BungeePIChannel parseBPIData(byte[] data) {
-        return new BungeePIChannel(data);
+    public List<Byte> getBytes() {
+        return bytes;
+    }
+    
+    public byte getByte(int index) {
+        return data[index];
     }
 }
