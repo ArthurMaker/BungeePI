@@ -24,6 +24,7 @@
 
 package org.goblom.bpi.bukkit_example;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.goblom.bpi.bukkit_example.listener.BPIEventListener;
 import org.goblom.bpi.bukkit_example.listener.BukkitEventListener;
@@ -35,6 +36,7 @@ import org.goblom.bpi.bukkit_example.listener.BukkitEventListener;
 public class BPIExample extends JavaPlugin {
     
     private static BPIExample plugin;
+    public static String prefix = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "BungeePI" + ChatColor.DARK_GRAY + "] " + ChatColor.RESET;
     
     public void onEnable() {
         plugin = this;

@@ -24,7 +24,23 @@
 
 package org.goblom.bpi.bukkit_example.listener;
 
+import org.bukkit.Bukkit;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+
+
+import org.goblom.bpi.bukkit.events.recieve.RecieveForwardEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveGetServerEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveGetServersEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveIPEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecieveOtherEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecievePlayerCountEvent;
+import org.goblom.bpi.bukkit.events.recieve.RecievePlayerListEvent;
+import org.goblom.bpi.bukkit.events.send.SendConnectEvent;
+import org.goblom.bpi.bukkit.events.send.SendConnectOtherEvent;
+import org.goblom.bpi.bukkit.events.send.SendForwardEvent;
+import org.goblom.bpi.bukkit.events.send.SendMessageEvent;
+import org.goblom.bpi.bukkit_example.BPIExample;
 
 /**
  *
@@ -32,4 +48,58 @@ import org.bukkit.event.Listener;
  */
 public class BPIEventListener implements Listener {
     
+    @EventHandler
+    public void onRecieveForward(RecieveForwardEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved Forward Channel");
+    }
+    
+    @EventHandler
+    public void onRecieveGetServer(RecieveGetServerEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved GetServer Channel");
+    }
+    
+    @EventHandler
+    public void onRecieveGetServers(RecieveGetServersEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved GetServers Channel");
+    }
+    
+    @EventHandler
+    public void onRecieveIP(RecieveIPEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved IP Channel");
+    }
+    
+    @EventHandler
+    public void onRecieveOther(RecieveOtherEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved a non-normal channel");
+    }
+    
+    @EventHandler
+    public void onRecievePlayerCount(RecievePlayerCountEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved PlayerCount Channel");
+    }
+    
+    @EventHandler
+    public void onRecievePlayerList(RecievePlayerListEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Recieved PlayerList Channel");
+    }
+    
+    @EventHandler
+    public void onSendConnect(SendConnectEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Sent Connect Channel");
+    }
+    
+    @EventHandler
+    public void onSendConnectOther(SendConnectOtherEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Sent ConnectOther Channel");
+    }
+    
+    @EventHandler
+    public void onSendForwardEvent(SendForwardEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Sent Forward Channel");
+    }
+    
+    @EventHandler
+    public void onSendMessage(SendMessageEvent event) {
+        Bukkit.broadcastMessage(BPIExample.prefix + "Sent Message Channel");
+    }
 }
